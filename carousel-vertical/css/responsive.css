@@ -1,0 +1,132 @@
+/* Landscape phones and down */
+@media only screen and (max-width: 640px) {
+.carousel-widget {
+  width: 640px;
+}	
+#slideshow-main, #slideshow-main ul, #slideshow-main li { width: 100%!important; }
+#slideshow-carousel { width: 100%!important; }
+
+.jcarousel-skin-tango { position: relative; }
+
+/**
+ *  Horizontal Buttons
+ */
+.jcarousel-skin-tango .jcarousel-next-horizontal {
+    position: absolute;
+				bottom: 0;
+    top: /*43px*/ auto;
+    right: /*5px*/ 0;
+    width: 32px;
+    height: 43px;
+    cursor: pointer;
+    background: transparent url(../images/responsive/next-horizontal.jpg) no-repeat 0 0;
+				z-index: 10;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-next-horizontal {
+    /*left: 5px;
+    right: auto;*/
+    background-image: url(../images/responsive/next-horizontal.jpg);
+				z-index: 10;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-horizontal:focus {
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:active {
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:focus,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal {
+    position: absolute;
+				bottom: 0;
+    top: /*43px*/ auto;
+    left: /*5px*/ 0;
+    width: 32px;
+    height: 43px;
+    cursor: pointer;
+    background: transparent url(../images/responsive/prev-horizontal.jpg) no-repeat 0 0;
+				z-index: 10;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-prev-horizontal {
+    /*left: auto;
+    right: 5px;*/
+    background-image: url(../images/responsive/prev-horizontal.jpg);
+				z-index: 10;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:hover, 
+.jcarousel-skin-tango .jcarousel-prev-horizontal:focus {
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:active {
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:focus,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
+#slideshow-main li a img {
+	width: 100%!important;
+	height: auto !important;
+}
+
+#slideshow-main li {
+  height: 402px;
+}
+}
+@media only screen and (max-width: 360px ) {
+/*#slideshow-carousel { width: 360px!important; }*/
+.carousel-widget {
+  width: 360px;
+}
+
+#slideshow-main li {
+  height: 226px;
+}
+
+#slideshow-main li span.content h1 {
+  bottom: 55px;
+}
+
+#slideshow-main li span.content p {
+  bottom: 10px;
+}
+
+}
+@media only screen and (max-width: 320px ) {
+#slideshow-main li {
+  height: 201px;
+}
+
+/*#slideshow-carousel { width: 320px!important; }*/
+.carousel-widget {
+  width: 320px;
+}
+
+#slideshow-main li span.content h1 {
+  font-size: 16px;
+}
+
+#slideshow-main li span.content p {
+  font-size: 12px;
+}
+
+}

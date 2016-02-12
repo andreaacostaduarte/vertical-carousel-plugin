@@ -1,0 +1,188 @@
+/*--------------------------------------------------------------------
+Global Reset CSS
+
+Author:			Ryan Brill <ryan [at] infinitywebdesign.com>
+Version:		1.2
+Purpose:		The purpose of this reset is not to reset all values 
+				to 0, but to give all browsers a common starting point.
+----------------------------------------------------------------------*/
+
+html, body, div, span, object, iframe,
+address, blockquote, h1, h2, h3, h4, h5, h6, p, pre,
+a, abbr, acronym, b, bdo, big, cite, code,
+del, dfn, em, i, img, ins, kbd, q, samp,
+small, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+form, fieldset, legend, label,
+table, caption, thead, tfoot, tbody, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+body {
+	color: #000;
+	background: #fff;
+	font-size: 62.5%; /* with this setting, 1em = 10px */
+	font-size: expression(screen.deviceXDPI > 96 ? 1000 / ((screen.deviceXDPI / 96) * 16) + "%" : "62.5%"); /* Fix for IE and dpi other than 96 dpi - http://www.williamkolean.com/williamblog/?p=18 */
+	line-height: 1.25; /* using unitless line-height */
+}
+
+/* Font Family
+----------------------------------------------------------------------*/
+body,
+textarea {
+	font-family: arial, helvetica, sans-serif;
+}
+
+/* Font Sizes
+----------------------------------------------------------------------*/
+/* Block level elements */
+address, blockquote, form, p, pre, table,
+dl, ol, ul {
+	font-size: 1.1em;
+}
+/* Nested block level elements + form fields */
+blockquote address, blockquote blockquote, blockquote form, blockquote p, blockquote pre, blockquote table, blockquote dl, blockquote ol, blockquote ul,
+dl address, dl blockquote, dl form, dl p, dl pre, dl table, dl dl, dl ol, dl ul,
+form address, form blockquote, form p, form pre, form table, form dl, form ol, form ul,
+ol address, ol blockquote, ol form, ol p, ol pre, ol table, ol dl, ol ol, ol ul,
+table address, table blockquote, table form, table p, table pre, table table, table dl, table ol, table ul,
+ul address, ul blockquote, ul form, ul p, ul pre, ul table, ul dl, ul ol, ul ul,
+button, input, select, textarea {
+	font-size: 1em;
+}
+h1 {
+	font-size: 2em;
+}
+h2 {
+	font-size: 1.8em;
+}
+h3 {
+	font-size: 1.6em;
+}
+h4 {
+	font-size: 1.4em;
+}
+h5 {
+	font-size: 1.2em;
+}
+h6 {
+	font-size: 1em;
+}
+
+/* Font Styles
+----------------------------------------------------------------------*/
+abbr, acronym {
+	text-decoration: underline;
+}
+address, cite {
+	font-style: normal;
+}
+b, strong {
+	font-weight: bold;
+}
+big {
+	font-size: 1.2em;
+}
+code, kbd, pre, samp, tt {
+	font-family: "Courier New", Courier, monospace;
+}
+del {
+	text-decoration: line-through;
+}
+dfn, em, i, var {
+	font-style: italic;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+ins {
+	text-decoration: underline;
+}
+small {
+	font-size: .8em;
+}
+sub {
+	vertical-align: sub;
+}
+sup {
+	vertical-align: super;
+}
+
+/* Margins
+----------------------------------------------------------------------*/
+p {
+	margin-bottom: 1em;
+}
+/*p, pre,
+h1, h2, h3, h4, h5, h6,
+ul, ol, dl,
+table {
+	margin-bottom: 1em;
+}
+ul ul, ul ol, ul dl
+ol ul, ol ol, ol dl,
+dl ul, dl ol, dl dl,
+table table {
+	margin-bottom: 0;
+}
+ul ul, ul ol,
+ol ul, ol ol {
+	margin-left: 1.5em;
+}*/
+
+/* Lists
+----------------------------------------------------------------------*/
+ol, ul {
+	list-style: none;
+}
+dl dt {
+	font-weight: bold;
+}
+
+/* Tables - tables still need 'cellspacing="0"' in the markup
+----------------------------------------------------------------------*/
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+
+/*iFrame
+----------------------------------------------------------------------*/
+iframe {
+	border: 1px solid #ccc;
+}
+
+/* Blockquote, Q, hr
+----------------------------------------------------------------------*/
+blockquote, q {
+	quotes: none;
+}
+
+/* Clearfix  (http: //www.positioniseverything.net/easyclearing.html)
+----------------------------------------------------------------------*/
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix {
+	display: inline-block; /* IE/Mac */
+}
+/* Hides from IE-mac \*/
+* html .clearfix {
+	height: 1%;
+}
+.clearfix {
+	display: block;
+}
+/* End hide from IE-mac */
