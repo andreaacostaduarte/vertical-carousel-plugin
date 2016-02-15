@@ -15,7 +15,6 @@ register_activation_hook( __FILE__, 'slide_flush_rewrite' );
 register_deactivation_hook( __FILE__, 'slide_flush_rewrite' );
 register_activation_hook(__FILE__, 'slide_add_defaults');
 register_uninstall_hook(__FILE__, 'slide_delete_plugin_options');
-add_action('admin_init', 'slide_admin_init');
 add_action("widgets_init","slide_widget_init");
 
 /*
@@ -57,7 +56,7 @@ function slide_init()
 	); 
 	register_post_type('slide', $args);
 	
-	//register the taxonomy type (according to the WP-3.9 documentation this must be done to prevent problems with queries)
+	//register the taxonomy type
 	$labels = array(
 		'name'                       => _x( 'Slides', 'taxonomy general name' ),
 		'singular_name'              => _x( 'Slides', 'taxonomy singular name' ),
@@ -87,6 +86,16 @@ function slide_init()
 	);
 	register_taxonomy( 'slide', 'slide', $args );
 }
+
+add_action( 'admin_menu', 'slide_admin_menu' );
+function slide_admin_menu() {
+  global $menu;
+  foreach ( $menu as $key => $val ) {
+    if ( __( 'Carousel Slides') == $val[0] ) {
+      $menu[$key][6] = 'dashicons-format-gallery';
+    }
+  }
+}
  
 function slide_widget_init()
 {
@@ -100,28 +109,22 @@ function slide_flush_rewrite()
 {
 	//flush re-write rules to ensure we don't get 404s
 	global $wp_rewrite;
-    $wp_rewrite->flush_rules();
+ $wp_rewrite->flush_rules();
 }
 
 /*
- * Sets up the default plugin values on activation
+ * Sets up the default plugin values on activation: For future improvement
  */
 function slide_add_defaults() {
 	$tmp = get_option('slide_options');
-    if((!is_array($tmp))) {
-		delete_option('slide_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
-		$arr = array(	"slide_italic" => "0",
-						"slide_bold" => "0",
-						"slide_align" => "right",
+  if((!is_array($tmp))) {
+		delete_option('slide_options'); 
+		$arr = array(	"slide_version" => "1.0",
+						"slide_speed" => "0",
 						"slide_width" => "500",
-						"slide_color" => "000000",
+						"title_disabled" => "0",
 						"description_disabled" => "0",
-						"description_italic" => "0",
-						"description_bold" => "0",
-						"description_align" => "right",
 						"thumb_disabled" => "0",
-						"thumb_italic" => "0",
-						"thumb_bold" => "0",
 						"slide_css" => "",
 		);
 		update_option('slide_options', $arr);
@@ -133,29 +136,6 @@ function slide_add_defaults() {
  */
 function slide_delete_plugin_options() {
 	delete_option('slide_options');
-}
-
-/*
- * Registers the slide options settings
- */
-function slide_admin_init()
-{
-	register_setting( 'slide_options', 'slide_options', 'slide_validate_options' );
-}
-
-/*
- * Validations for any text based settings so that HTML injection is not possible
- */
-function slide_validate_options($input)
-{
-	$input['slide_width'] = wp_filter_nohtml_kses($input['slide_width']);
-	$input['slide_colour'] = strtoupper(wp_filter_nohtml_kses($input['slide_colour']));
-	$input['css'] = wp_filter_nohtml_kses($input['css']);
-	if($input['slide_width'] < '100' || $input['slide_width'] > '2000')
-		$input['slide_width'] = '500';
-	if($input['slide_colour'] < '000000' || $input['slide_colour'] > 'FFFFFF')
-		$input['slide_colour'] = '000000';
-	return $input;
 }
 
 /*
@@ -188,10 +168,8 @@ function slide_meta()
 				
 				<div style="margin-bottom:10px;">&nbsp;</div>
 				
-				<label for="slide_thumb"><img src="<?php echo $base; ?>/thumbnail.png" alt="Slides Thumb"/> Slide Thumbnail: </label>
-				<!--<input type="text" name="slide_thumb" tabindex="3" style="width: 100%;" value="<?php echo $slide_thumb; ?>"/>-->
-					<input id="carousel_slide_thumb" type="text" name="carousel_slide_thumb" value="<?php echo $slide_thumb; ?>" />
-									<input class="upload_image_button" type="button" value="Upload Large Image" />				
+				<label for="slide_thumb"><img src="<?php echo $base; ?>/thumbnail.png" alt="Slides Thumb"/> Slide Thumbnail: </label>  		<input id="carousel_slide_thumb" type="text" name="carousel_slide_thumb" value="<?php echo $slide_thumb; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Thumbnail Image" />				
 			</div> <!-- /form-field -->
 		</div> <!-- /inside -->
 <!-- plugin admin script image: start -->
@@ -219,7 +197,6 @@ jQuery(document).ready(function() {
 					}
 					upload_image_button=false;
 	});
-
 })
 </script>
 <!-- plugin admin script image: end -->  		
